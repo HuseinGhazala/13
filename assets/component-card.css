@@ -593,3 +593,11 @@
     clip-path: polygon(var(--shape--blob-5));
   }
 }
+
+.shape--test{
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+}
+.shape--test:hover{
+  clip-path: none;
+  clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+}
