@@ -8,16 +8,90 @@
       margin-top: 2rem;
     }
   }
+  .img_404 {
+    background-repeat: round;
+  }
+  .main_contenet {
+    position: relative;
+  }
+  .main_contenet .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
-
-<div class="template-404 page-width page-margin center">
-  <p>
-    {{ 'templates.404.subtext' | t }}
-  </p>
-  <h1 class="title">
-    {{ 'templates.404.title' | t }}
-  </h1>
-  <a href="{{ routes.all_products_collection_url }}" class="button">
-    {{ 'general.continue_shopping' | t }}
-  </a>
+{% comment %} background-image: url('{{ section.settings.imageBg | image_url: width: 1600 , height: 800}}') {% endcomment %}
+<div
+  class="template-404 page-width page-margin center  color-{{ section.settings.color_scheme }}"
+  style="; padding: 40px"
+>
+  <div class="main_contenet">
+    <img class="img_404" src="{{section.settings.imageBg | image_url}}" width="800" height="800">
+    <div class="content">
+      <div>
+        <h1>
+          {{ 'templates.404.subtext' | t }}
+        </h1>
+        <h1 class="title">
+          {{ section.settings.title }}
+        </h1>
+        {% if section.settings.btnlink == blank %}
+          {% assign btnlink = shop.secure_url %}
+        {% else %}
+          {% assign btnlink = section.settings.btnlink %}
+        {% endif %}
+        <a href="{{ btnlink }}" class="button"> {{ section.settings.btntext }}</a>
+        {% comment %}
+          <a href="{{ shop.secure_url }}" class="button">
+            {{ 'general.continue_shopping' | t }}
+          </a>
+        {% endcomment %}
+      </div>
+    </div>
+    {% comment %}
+      <a href="{{ routes.all_products_collection_url }}" class="button">
+        {{ 'general.continue_shopping' | t }}
+      </a>
+    {% endcomment %}
+  </div>
 </div>
+
+{% schema %}
+{
+  "name": "404",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "image_picker",
+      "id": "imageBg",
+      "label": "bg image"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "btntext",
+      "label": "botton text",
+      "default": "home page"
+    },
+    {
+      "type": "url",
+      "id": "btnlink",
+      "label": "botton url"
+    }
+  ]
+}
+{% endschema %}
