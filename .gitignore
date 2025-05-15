@@ -8,3 +8,6 @@
 ehthumbs.db
 Thumbs.db
 .shopify
+package-lock.json
+package.json
+node_modules
