@@ -1,10 +1,13 @@
 {
-  "sections": {
-    "main": {
-      "type": "main-404"
-    }
-  },
-  "order": [
-    "main"
-  ]
+    "name": "403",
+    "layout": "theme",
+    "wrapper": "section.div",
+    "sections":{
+        "ex-404t": {
+            "type": "404t"
+        }
+    },
+    "order": [
+        "ex-404t"
+    ]
 }

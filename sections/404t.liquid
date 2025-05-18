@@ -1,0 +1,39 @@
+
+<h2 class="">{{ section.settings.title404 }}</h2>
+<h3 class="">{{ section.settings.des404 }}</h3>
+{%- if section.settings.btnlink == blank -%}
+    {%- assign btnlink = shop.secure_url -%}
+    {%- else -%}
+    {%- assign btnlink = section.settings.btnlink -%}
+{%- endif -%}
+<a href="{{ btnlink }}" class="btn btn--primary">
+  {{ section.settings.btntitle }}
+{% schema %}
+{
+  "name": "404",
+  "tag": "section",
+  "class": "flex items-center justify-center ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title404",
+      "default": "404",
+      "label": "404 Title"
+    },{
+      "type": "text",
+      "id": "des404",
+      "default": "description",
+      "label": "404 description"
+    },{
+        "type": "text",
+        "id": "btntitle",
+        "default": "Back to home",
+        "label": "Button title"
+    },{
+        "type": "url",
+        "id": "btnlink",
+        "label": "Button link"
+    }
+  ]
+}
+{% endschema %}
